@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .hide{height: 30px;overflow: hidden;}
+        #txt{position: absolute}
+        div{float: left; margin-top: -50px;}
+    </style>
+    <script src="jquery-1.7.2.js"></script>
+    <script>
+        $(()=>{
+            let arr=['我喜欢你是寂静的，好像你已远去。我喜欢你是寂静的，好像你已远去。我喜欢你是寂静的，好像你已远去'];
+            $.each(arr,function (index, elem) {
+                let str=elem.split('');
+                $.each(str,(n,m)=>{
+                    $('body').append($('<div>'+m+'</div>'))
+                })
+            });
+            let n=0;
+            for(let i=0;i<$('div').length;i++){
+                $('div').eq(i).animate({
+                    marginTop:'200px'
+                },30)
+
+                console.log(i)
+            }
+
+        })
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

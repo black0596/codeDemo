@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{padding: 0;margin: 0;list-style: none;}
+        #box{width: 610px; margin: 100px auto; position: relative;}
+        #box .mark{width: 150px;height: 50px;border: 1px solid black;background: red; color: black; float: left; line-height:
+            50px;text-align: center;  z-index: 10;}
+        #box #fir{width: 152px;height: 52px;opacity: 0.5;background: blue; position: absolute;top:0;
+            left:0;}
+    </style>
+
+    <script>
+        window.onload=function () {
+            let oBox = document.getElementById('box');
+            let oFir = document.getElementById('fir');
+            let aMark = oBox.getElementsByClassName('mark');
+            let iSpeed = 0;
+            let timer = null;
+            let timer2 = null;
+            for (let i = 0; i < aMark.length; i++) {
+                aMark[i].onmouseover = function () {
+                      clearTimeout(timer2)
+                      StatMove(this.offsetLeft);
+                };
+                aMark[i].onmouseout=function () {
+                    timer2=setTimeout(function(){
+                        StatMove(0);
+                    },100)
+                }
+            }
+            oFir.onmouseover=function(){
+                clearTimeout(timer2)
+            };
+            oFir.onmouseout=function(){
+              timer2=setTimeout(function(){
+                  StatMove(0);
+              },100)
+            };
+
+            function StatMove(iTarget){
+              clearInterval(timer);
+              timer=setInterval(function(){
+                iSpeed+=(iTarget-oFir.offsetLeft)/6;
+                iSpeed*=0.75;
+                if(Math.abs(iSpeed)<1&&Math.abs(iTarget-oFir.offsetLeft)<1){
+                  clearInterval(timer);
+                  iSpeed=0;
+                  oFir.style.left=iTarget+'px';
+                }else {
+                  oFir.style.left=oFir.offsetLeft+iSpeed+'px';
+                }
+              },30)
+            }
+
+        }
+    </script>
+</head>
+<body>
+ <ul id="box">
+     <li id="fir"></li>
+     <li class="mark">首页</li>
+     <li class="mark">视频</li>
+     <li class="mark">留言</li>
+     <li class="mark">关于我们</li>
+ </ul>
+</body>
+</html>

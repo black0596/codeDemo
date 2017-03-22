@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        canvas{background: black;}
+    </style>
+    <script src="jquery-1.7.2.js"></script>
+    <script>
+        window.onload=function () {
+            let can=document.getElementById('box');
+            let ctx=can.getContext('2d');
+            let w=can.width=window.innerWidth;
+            let h=can.height=window.innerHeight;
+            let snow=200;//雪花数
+            let arr=[];//存放雪花坐标
+            for(let i=0;i<snow;i++){
+              arr.push({
+                  x:Math.random()*w,//在页面里面随机位置
+                  y:Math.random()*h,
+                  r:Math.random()*5+1//随机半径
+              })
+            }
+           // draw();
+            function draw() {
+                ctx.clearRect(0,0,w,h);
+                ctx.beginPath();//开始画圆路径
+                ctx.fillStyle='#fff';
+                for(let i=0;i<arr.length;i++){
+                    let p=arr[i];
+                    ctx.moveTo(p.x,p.y);
+                    ctx.arc(p.x,p.y,p.r,0,360,false)
+                }
+                ctx.fill();
+                update();
+            }
+            setInterval(draw,30);
+            function update() {
+                for(let i=0;i<arr.length;i++){
+                    let p=arr[i];
+                    p.y+=Math.random()*10+0.1;
+                }
+            }
+        };
+
+
+
+    </script>
+</head>
+<body>
+<canvas width="500" height="500" id="box"></canvas>
+</body>
+</html>

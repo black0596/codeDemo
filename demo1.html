@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>Document</title>
+    <style>
+        #box{}
+        li{width:40px;line-height:20px;height: 20px;margin:20px auto; border: 5px solid #ccc; text-align: center; list-style: none;cursor:pointer;}
+    </style>
+    <script>
+        window.onload=function () {
+            let oBox=document.getElementById('box');
+            oBox.onclick=function (ev) {
+                let oEvent=ev||event;
+                let oSrc=oEvent.target||oEvent.srcElement;
+                if(oSrc.tagName=='LI'){
+                    oSrc.style.background='red';
+                }
+            }
+        }
+	</script>
+</head>
+<body>
+
+
+<ul id="box">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>
+
+
+</body>
+</html>

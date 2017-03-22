@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @-webkit-keyframes tab{
+            10%{top:0;}
+            20%{
+                transform:rotate(45deg);
+                width:100px;height: 100px;background: #ff98cd;
+                border-radius:0 0 40% 0 ;top:0;
+            }
+            30%{top:30px;}
+            40%{
+                width:100px;height: 100px;background:
+                #ff98cd;border-radius:0  40% 0  0 ;transform:rotate(135deg);
+                top:0;
+            }
+            50%{top:30px;}
+            60%{
+                width:100px;height: 100px;background: #ff98cd;
+                border-radius:40%  0 0 0 ;transform:rotate(225deg);
+                top:0;
+            }
+            70%{top:30px;}
+            80%{ width:100px;height: 100px;background: #ff98cd;
+                border-radius:  0 0 0 40%;transform:rotate(315deg); top:0;
+                }
+            90%{top:30px;}
+            100%{ width:100px;height: 100px;background: #ff98cd;
+                border-radius:0 0 40% 0 ;transform:rotate(405deg);
+                top:0;
+                }
+        }
+
+        *{padding: 0; margin: 0;}
+        #deg{ margin:100px auto;
+            position: relative;
+            top:30px;
+            transform:rotate(0deg);
+            transition: 1s all ease;
+            border-radius:0 0 40% 0 ;
+            width:100px;height: 100px;background: #ff98cd;
+           animation:tab 2s infinite;
+        }
+    </style>
+    <script src="jquery-1.7.2.js"></script>
+    <script>
+
+    </script>
+</head>
+<body>
+    <div id="deg"></div>
+</body>
+</html>

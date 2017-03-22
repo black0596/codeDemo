@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin: 0;padding: 0;list-style: none;}
+        #box{position: relative; margin-top: 200px;}
+        #box ul{width:300px;height:150px;margin: 0 auto; border: 1px solid #ccc; position: relative;}
+        #box span{height: 150px;width: 6px;position: absolute;left: 50%;margin-left: -3px;background: red;top:1px;}
+        #box ul li{width: 150px;height: 150px;background: #00AA88; position: absolute; transition: 1s all ease;}
+    </style>
+
+    <script src="jquery-1.7.2.js"></script>
+    <script>
+       $(()=>{
+            let $aLi=$('#box ul li');
+            $aLi.each((index,elem)=>{
+                $(elem).click(function () {
+                      $(elem).siblings().css({
+                          transform:'perspective(1200px) rotateY(180deg)',
+                          transformOrigin:'150px'
+                      });
+                })
+            })
+       })
+    </script>
+</head>
+<body>
+   <div id="box">
+       <ul>
+           <li style="background: red"></li>
+           <li style="background: blue"></li>
+           <li style="background: green"></li>
+           <li style="background: yellow"></li>
+       </ul>
+       <span></span>
+   </div>
+</body>
+</html>

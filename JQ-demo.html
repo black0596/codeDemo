@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin: 0;padding: 0;list-style: none;}
+        #box{position: relative; width: 200px;height: 260px;margin: 80px auto; background: #ccc;}
+        #box p{font-size: 16px;color: #fff;font-weight: bold;line-height: 260px; display: none;z-index:1;position: absolute; left: 50%;}
+        #box span{width: 60px;height:60px;background: red;border-radius: 50%; position: absolute; margin: 10px; bottom:0; display: none;z-index: 111;}
+       #box div b{width: 0;background: black;  opacity:0.5;height: 100%;position: absolute;left: 50%; top:0;}
+    </style>
+
+    <script src="jquery-1.7.2.js"></script>
+    <script>
+       $(()=>{
+            $('#box').on('mouseover',function () {
+                $('#box div b').stop().animate({
+                    width:'200',
+                    left:'0'
+                },500);
+                $('#box p').show('slow');
+                $('#box span').stop().show().animate({
+                    bottom:'100px'
+                },500)
+
+            })
+           $('#box').on('mouseout',function () {
+               $('#box div b').stop().animate({
+                   width:'0',
+                   left:'50%'
+               },500);
+               $('#box p').hide();
+               $('#box span').stop().animate({
+                   bottom:'0'
+               },500).hide();
+
+           })
+
+       })
+    </script>
+</head>
+<body>
+   <div id="box">
+       <div>
+           <b></b>
+       </div>
+       <p>123456</p>
+       <span></span>
+
+   </div>
+</body>
+</html>

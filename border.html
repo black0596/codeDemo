@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>border</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        #box{width: 100px;height: 100px;background: #ccc; margin: 100px auto; position: relative; overflow: hidden;}
+        #box p{width:120px;height:120px;background:yellow; position: absolute; top: 0; cursor: pointer;}
+    </style>
+    <script>
+        /*let oBox=document.getElementById('box');
+     let oP=document.getElementById('p');
+     let timer=null;
+     let iSpeed=0;
+     let iH=0;
+     oBox.onmouseover=function () {
+     clearInterval(timer);
+     timer=setInterval(function () {
+     iSpeed+=2;
+     if(iSpeed>=oBox.offsetHeight){
+     iSpeed=oBox.offsetHeight;
+     }
+     iH+=2;
+     if(iH>=oBox.offsetWidth){
+     iH=oBox.offsetWidth;
+     }
+     oP.style.height=iSpeed+'px';
+     },30)
+     }*/
+        window.onload=function () {
+            let oBox=document.getElementById('box');
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <p id="p"></p>
+    </div>
+</body>
+</html>

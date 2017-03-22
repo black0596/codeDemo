@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>碰撞运动</title>
+    <style>
+        div{width: 100px;height:100px;border-radius:50%;border:5px solid #000; position:absolute;}
+        #btn{position: absolute;left: 50%;}
+    </style>
+    <script>
+        window.onload=function () {
+            let  oBox=document.getElementById('box');
+            let timer=null;
+            let oBos=document.getElementById('bod');
+            let oBtn=document.getElementById('btn');
+            nbs=oBox;
+            startMove(oBox);
+            oBtn.disable=true;
+            oBtn.onclick=function () {
+                startMove(nbs);
+                oBox.onclick=function () {
+                    rem(oBox);
+                    setTimeout(function () {
+                        let nbs=document.createElement('div');
+                        oBos.appendChild(nbs);
+                        startMove(nbs)
+
+                    },1000);
+                    rem(nbs)
+                };
+           };
+           function rem(iPre) {
+               iPre.style.transition='2s';
+               iPre.style.width='0';
+               iPre.style.height='0';
+               iPre.style.opacity='0';
+               setTimeout(function () {
+                   oBos.removeChild(iPre);
+               },2000);
+           }
+            function  startMove(iPre){
+                clearInterval(timer);
+                let x=6;
+                let y=6;
+                timer=setInterval(function(){
+                    let L=iPre.offsetLeft+x;
+                    let T=iPre.offsetTop+y;
+                    if(T>=document.documentElement.clientHeight-iPre.offsetHeight){
+                        T=document.documentElement.clientHeight-iPre.offsetHeight;
+                        y*=-1;
+                    }else if(T<0){
+                        T=0;
+                        y*=-1;
+                    }
+                    if(L>=document.documentElement.clientWidth-iPre.offsetWidth){
+                        L=document.documentElement.clientWidth-iPre.offsetWidth;
+                        x*=-1;
+                    }else if(L<0){
+                        L=0;
+                        x*=-1;
+                    }
+                    iPre.style.left=L+'px';
+                    iPre.style.top=T+'px';
+                },30)
+            }
+        }
+    </script>
+</head>
+<body id="bod">
+<div id="box"></div>
+<input type="button" value="开始游戏" id="btn">
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box{position: absolute;left: 50%;top:50%;width: 50px;height:50px;border-radius: 50%;border: 3px solid red; cursor: pointer;}
+        #box img{width: 50px;height:50px; position: absolute; border-radius: 50%;top:50%; left: 50%;margin-left: -25px; margin-top: -25px;}
+        #box p{text-align: center;line-height:60px; transition: 1s all ease;}
+    </style>
+    <script>
+        window.onload=function () {
+            let oBox=document.getElementById('box');
+            let oP=oBox.getElementsByTagName('p')[0];
+            let oImg=oBox.getElementsByTagName('img');
+            let bOk=true;
+            let iR=-150;
+            oBox.onclick=function () {
+                if(bOk){
+                    oP.style.WebkitTransform='rotate(-360deg)';
+                    for(let i=0;i<oImg.length;i++){
+
+                        let oTl=Dir(iR,90/3*i);
+                        oImg[i].style.transition='1s '+i*100+'ms ease';
+                        oImg[i].style.left=oTl.l+'px';
+                        oImg[i].style.top=oTl.t+'px';
+                    }
+
+                }else{
+                    oP.style.WebkitTransform='rotate(0deg)';
+                }
+                bOk=!bOk;
+            };
+            function Dir(iR,Dir) {
+               return {l:Math.round(Math.sin(Dir/180*Math.PI)*iR),t:Math.round(Math.cos(Dir/180*Math.PI)*iR)}
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <p>X</p>
+    <img src="img/1.jpg" alt="">
+    <img src="img/2.jpg" alt="">
+    <img src="img/3.jpg " alt="">
+    <img src="img/4.jpg" alt="">
+</div>
+</body>
+</html>

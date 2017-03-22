@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style>
+        *{margin: 0; padding: 0;list-style: none;}
+        #box{width: 538px;height: 405px;margin: 50px auto; overflow: hidden;position: relative; border: 1px solid red;}
+        #box ul{width: 538px;height: 405px;}
+        #box ul li{position: absolute;}
+        #box ol{position: absolute; bottom: 20px;width: 100px;left: 50%; margin-left:-50px;z-index: 99999;}
+        #box ol li{float: left;margin: 5px; width: 10px;height: 10px;background: black;border-radius: 50%; cursor:pointer;z-index: 99999;}
+        #box ol li.active{background: green;}
+    </style>
+    <script src="jquery-1.7.2.js"></script>
+    <script>
+        $(function () {
+            let $ulLi=$('#box ul li');
+            let $olLi=$('#box ol li');
+            let noeWidth=$ulLi.width();
+            let iNow=0;
+            let timer=null;
+            //
+            $ulLi.slice(1).each(function () {//循环 截取的4个li 改变定位 定位到..
+               $(this).css({'left':noeWidth})
+            });
+
+            $olLi.on('mouseover',function () {//移入
+                let This=this;
+                clearTimeout(timer);
+                function tab() {
+                    $(This).attr('class','active').siblings().attr('class','');
+                    let index=$(This).index();
+                    if(iNow>index){
+                        $ulLi.eq(iNow).animate({'left':noeWidth},400);
+                    }else if(iNow<index){
+                        $ulLi.eq(iNow).animate({'left':-noeWidth},400);
+                    }
+
+                    $ulLi.eq($(This).index()).animate({'left':0},400);
+                    iNow=index;
+                }
+                timer=setTimeout(tab,400);
+
+            })
+        });
+    </script>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li><img src="img/1.jpg" alt=""></li>
+        <li><img src="img/2.jpg" alt=""></li>
+        <li><img src="img/3.jpg" alt=""></li>
+        <li><img src="img/4.jpg" alt=""></li>
+    </ul>
+    <ol>
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+</div>
+</body>
+</html>

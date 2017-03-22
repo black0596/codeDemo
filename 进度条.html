@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        #jdt{position: relative;width: 60%;height:30px; border:1px solid blue; left: 50%; margin-left: -30%; margin-top:200px; border-radius: 10px;min-width:600px;}
+        #bar{position: absolute;height: 30px;background: green; top: 0;border-radius: 10px;}
+        #text{color: red;text-align: center;line-height: 30px;font-size: 16px; font-weight: bold; z-index: 100; position: absolute;
+        left: 50%;}
+        #btn{width: 200px;margin: 10px auto}
+
+
+
+    </style>
+    <script>
+        window.onload=function () {
+            let oBOx=document.getElementById('jdt');
+            let oT=document.getElementById('text');
+            let oBar=document.getElementById('bar');
+            let oBtn=document.getElementsByTagName('input');
+            let timer=null;
+            let iSpeed=0;
+            oBtn[1].disabled=true;
+            oBtn[2].disabled=true;
+            oBtn[0].onclick=function () {
+                clearInterval(timer);
+                oBtn[1].disabled=false;
+                timer=setInterval(function () {
+                    iSpeed+=(oBOx.offsetWidth/100);
+                    let scale=Math.abs(parseInt(oBar.offsetWidth/oBOx.offsetWidth*100));
+                   if(iSpeed>=oBOx.offsetWidth){
+                       iSpeed=oBOx.offsetWidth;
+                       oBtn[2].disabled=false;
+                       oBar.style.width=100+'%';
+                       scale=100
+                   }
+                    oT.innerHTML=scale+'%';
+                    oBar.style.width=iSpeed+'px';
+                },100);
+
+
+            };
+
+
+            oBtn[1].onclick=function () {
+                clearInterval(timer);
+            };
+
+
+            oBtn[2].onclick=function () {
+                if(oBar.offsetWidth==oBOx.offsetWidth){
+                    clearInterval(timer);
+
+                    oBar.style.width=0;
+                    oT.innerHTML=0+'%'
+                }
+
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <div id="jdt">
+
+            <span id="bar"></span>
+            <p id="text">0%</p>
+        </div>
+        <div id="btn">
+            <input style="" type="button" value="开始" class="inp1">
+            <input type="button" value="暂停" class="inp2">
+            <input type="button" value="复位" class="inp3">
+        </div>
+
+    </div>
+</body>
+</html>
