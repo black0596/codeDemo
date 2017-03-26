@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style></style>
+    <script>
+     /*   let person = function (age) {
+            this.Age = function () { return age; }
+        };
+        let p1 = new person(12);
+        console.log("p1.Age " + p1.Age());
+        p1.Age = 29;
+        console.log("p1.Age " + p1.Age);*/
+     var person = function (age) {
+         this.Age = function () { return age; }
+     };
+     var p1 = new person(12);
+     Object.defineProperty(p1,'Age',{
+         writable:false
+     });
+     console.log("p1.Age " + p1.Age());
+     p1.Age = 29;
+     console.log("p1.Age " + p1.Age());
+    </script>
+</head>
+<body>
+
+</body>
+</html>
