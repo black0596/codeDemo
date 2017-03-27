@@ -9,35 +9,32 @@
     </style>
     <script src="jquery-1.7.2.js"></script>
     <script>
-        /*window.onload=function () {
-            var oLink=document.getElementById('boc');
-            var oTarget=document.getElementById('target');
-
-            window.onscroll=function () {
-                var oScroll=document.documentElement.scrollTop||document.body.scrollTop;
-                console.log(oScroll);
-                oLink.onclick=function () {
-                    oScroll=oTarget.offsetTop;
-                }
-            };
-        }*/
-        /*window.onscroll=function(){
-
-            if(document.body.scrollTop!=0){
-
-                $('#boc').slideDown();
-            }else{
-                $('#boc').slideUp();
+        //原声
+        window.onload=window.onscroll=function () {
+            let oLink=document.getElementById('boc');
+            let oTarget=document.getElementById('target');
+            let iS=0;
+            let timer=null;
+            oLink.onclick=function () {
+                timer=setInterval(function () {
+                    iS+=30;
+                    if(iS>=oTarget.offsetTop){
+                        iS=oTarget.offsetTop;
+                        clearInterval(timer)
+                    }
+                    document.documentElement.scrollTop=document.body.scrollTop=iS;
+                },10)
             }
-        };*/
+        };
 
-           $(function () {
+//Jquery
+           /*$(function () {
                $('#boc').click(function () {
                    $('body').animate({
                        'scrollTop':$('#target').offset().top
                    },200)
                })
-           })
+           })*/
 
     </script>
 </head>
