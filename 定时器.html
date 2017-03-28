@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 100px;height: 100px;border: 1px solid #ccc; position: absolute; top: 30px; margin: 0;padding: 0;}
+    </style>
+    <script src="jquery.js"></script>
+    <script>
+       window.onload=function () {
+            let oBox = document.getElementById('box');
+            let oBtn=document.getElementById('btn');
+            let timer=null;
+            let bOk=true;
+            let n=0;
+            oBtn.onclick=function () {
+                clearInterval(timer);
+                timer=setInterval(function () {
+                    if(bOk){
+                        n+=4;
+                        if(n>=800){
+                            n=800;
+                            bOk=!bOk;
+                        }
+                        oBox.style.left=n+4+'px';
+                    }else{
+                        n-=4;
+                        if(n<=0){
+                            n=0;
+                        }
+                        oBox.style.left=n+'px';
+                    }
+
+                },30);
+            }
+
+
+        };
+     /*$(function () {
+         $('#btn').click(function () {
+             $('#box').stop().animate({left:'800px'},3000,function () {
+                 $('#box').stop().animate({left:'0px'},3000)
+             })
+         });
+         let Box=true;
+         $('#btn2').click(function () {
+             if(!Box){
+                 $('#box').stop().animate({left:'800px'},3000,function () {
+                     $('#box').stop().animate({left:'0px'},3000)
+                 });
+                console.log(1)
+             }else{
+                 $('#box').stop(true);
+                 console.log(2);
+             }
+             Box=!Box
+         })
+     })*/
+   </script>
+</head>
+<body>
+<div id="box"></div>
+<input type="button" value="annou" id="btn">
+<input type="button" value="展厅" id="btn2">
+</body>
+</html>
