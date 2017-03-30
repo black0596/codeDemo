@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,20 +9,21 @@
     </style>
     <script src="jquery.js"></script>
     <script>
-       window.onload=function () {
+/*       window.onload=function () {
             let oBox = document.getElementById('box');
             let oBtn=document.getElementById('btn');
             let timer=null;
-            let bOk=true;
+            let bOk;
             let n=0;
             oBtn.onclick=function () {
+                bOk=true;
                 clearInterval(timer);
                 timer=setInterval(function () {
                     if(bOk){
                         n+=4;
                         if(n>=800){
                             n=800;
-                            bOk=!bOk;
+                            bOk=false;
                         }
                         oBox.style.left=n+4+'px';
                     }else{
@@ -36,8 +38,8 @@
             }
 
 
-        };
-     /*$(function () {
+        };*/
+     $(function () {
          $('#btn').click(function () {
              $('#box').stop().animate({left:'800px'},3000,function () {
                  $('#box').stop().animate({left:'0px'},3000)
@@ -49,19 +51,112 @@
                  $('#box').stop().animate({left:'800px'},3000,function () {
                      $('#box').stop().animate({left:'0px'},3000)
                  });
-                console.log(1)
+                 console.log(1)
              }else{
                  $('#box').stop(true);
                  console.log(2);
              }
              Box=!Box
          })
-     })*/
+     })
    </script>
 </head>
 <body>
 <div id="box"></div>
 <input type="button" value="annou" id="btn">
 <input type="button" value="展厅" id="btn2">
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            margin-top: 50px;
+            width: 200px;
+            height: 200px;
+            border-top:10px solid red;
+            border-left:10px solid blue;
+            border-right:10px solid yellow;
+            border-bottom:10px solid green;
+            border-radius: 50%;
+            box-shadow: 0 0 30px 2px black;
+            position: relative;
+            top:0;
+            left:0;
+            /*transform:rotate(30deg);*/
+        }
+        .em1{
+            position: absolute;
+            top:0;
+            left: 50%;
+            width: 0;
+            height: 100%;
+            border: 1px solid #000;
+        }
+        .em2{
+            position: absolute;
+            top:50%;
+            left:0;
+            height: 0;
+            width: 100%;
+            border: 1px solid #000;
+        }
+        input{
+            margin-top: 100px;
+        }
+    </style>
+    <script src="jquery.js"></script>
+    <script>
+        window.onload=function () {
+            var oBox = document.getElementById('box');
+            var oBtn1=document.getElementById('btn1');
+            var oBtn2=document.getElementById('btn2');
+            var timer=null;
+            var bOk=false;
+            var n=0;
+            oBtn1.onclick=function () {
+                if (bOk) {
+                    return;
+                }else {
+                    console.log(bOk);
+                    clearInterval(timer);
+                    timer = setInterval(function () {
+                        if (bOk) {
+                            n -= 4;
+                            if (n <= 0) {
+                                n = 0;
+                            }
+                            oBox.style.left = n + 'px';
+                            //bOk=!bOk;
+                        } else {
+                            n += 4;
+                            if (n >= 800) {
+                                n = 800;
+                                bOk = true;
+                            }
+                            $('#box').css({transform: 'rotate(' + n + 'deg)', left: n + 'px'});
+                        }
+                        $('#box').css({transform: 'rotate(' + n + 'deg)', left: n + 'px'});
+                    }, 30);
+                }
+                };
+            oBtn2.onclick=function(){
+                bOk=false;
+                clearInterval(timer);
+            };
+        };
+    </script>
+</head>
+<body>
+<div id="box">
+    <em class="em1"></em>
+    <em class="em2"></em>
+</div>
+<input type="button" id="btn1" value="开始"/>
+<input type="button" id="btn2" value="暂停"/>
 </body>
 </html>

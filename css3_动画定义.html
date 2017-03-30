@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @keyframes li1 {
+            0%{left: 0; z-index: 4}
+            25%{left: -538px;}
+            50%{left: 538px;opacity: 0; z-index: 1;}
+            100%{left: 0;opacity: 1;}
+        }
+        @keyframes li2 {
+            0%{left: 0; z-index: 3}
+            25%{left: -538px;}
+            50%{left: 538px; z-index: 2;opacity: 0;}
+            100%{left: 0;opacity: 1;}
+        }
+        @keyframes li3 {
+            0%{left: 0;z-index:2;}
+            25%{left: -538px;}
+            50%{left: 538px; z-index: 3;opacity: 0;}
+            100%{left: 0;opacity: 1;}
+        }
+        @keyframes li4 {
+            0%{left: 0;z-index: 1;}
+            25%{left: -538px; }
+            50%{left: 538px; z-index: 4;opacity: 0;}
+            100%{left: 0; opacity: 1;}
+        }
+        *{margin: 0; padding: 0; list-style: none;}
+        #box{width: 538px;height: 405px;border: 1px solid #ccc; margin: 100px auto; overflow: hidden;}
+        ul{position: relative;}
+        ul li{position: absolute;}
+        ul li:nth-of-type(1){
+            animation-name:li1;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-iteration-count: 1;
+        }
+        ul li:nth-of-type(2){
+            animation-name:li2;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-iteration-count: 1;
+        }
+        ul li:nth-of-type(3){
+            animation:li3 60s;
+        }
+        ul li:nth-of-type(1){
+            animation:li4 90s;
+        }
+    </style>
+    <script></script>
+</head>
+<body>
+<div id="box">
+    <ul>
+       <li><img src="img/1.jpg" alt=""></li>
+        <li><img src="img/2.jpg" alt=""></li>
+        <!--<li><img src="img/3.jpg" alt=""></li>
+        <li><img src="img/4.jpg" alt=""></li>-->
+    </ul>
+</div>
+</body>
+</html>
